@@ -102,8 +102,11 @@ public class facebookLogin extends AppCompatActivity {
                     textView.setText(name);
                     loginstatus=true;
                     Picasso.get().load("https://graph.facebook.com/"+id+"/picture?type=large").into(imageView);
+                    database d = new database();
+                    d.saveData();
                     Intent intent = new Intent(facebookLogin.this,home.class);
                     startActivity(intent);
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();

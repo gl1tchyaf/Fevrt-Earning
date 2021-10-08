@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 
 public class home extends AppCompatActivity {
     static String link;
-    static long point=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class home extends AppCompatActivity {
         ImageView facebook= findViewById(R.id.facebook);
         ImageView youtube= findViewById(R.id.youtube);
         ImageView google= findViewById(R.id.google);
-        TextView mTextField = findViewById(R.id.point);
+
 
         facebook.setOnClickListener(v -> facebook());
         youtube.setOnClickListener(v -> youtube());
@@ -41,23 +41,7 @@ public class home extends AppCompatActivity {
 
         logout.setOnClickListener(v -> logout());
 
-        long maxCounter = 300000000;
-        long diff = 1000;
 
-        new CountDownTimer(maxCounter , diff ) {
-
-            public void onTick(long millisUntilFinished) {
-                long diff = maxCounter - millisUntilFinished;
-                mTextField.setText("seconds completed: " +diff  / 1000);
-                //here you can have your logic to set text to edittext
-                point= diff  / 1000;
-            }
-
-            public void onFinish() {
-                mTextField.setText("Max limit reached");
-            }
-
-        }.start();
     }
 
     void facebook(){

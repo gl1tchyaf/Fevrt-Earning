@@ -10,33 +10,33 @@ public class Employee implements Serializable
 
     @Exclude
     private String key;
-    private String name;
-    private String position;
+    private String ID;
+    private int point;
     public Employee(){}
-    public Employee(String name, String position)
+    public Employee(String ID, int point)
     {
-        this.name = name;
-        this.position = position;
+        this.ID = ID;
+        this.point = point;
     }
 
-    public String getName()
+    public String getID()
     {
-        return name;
+        return ID;
     }
 
-    public void setName(String name)
+    public void setID(String name)
     {
-        this.name = name;
+        this.ID = ID;
     }
 
-    public String getPosition()
+    public int getpoint()
     {
-        return position;
+        return point;
     }
 
-    public void setPosition(String position)
+    public void setpoint(int point)
     {
-        this.position = position;
+        this.point = point;
     }
     public String getKey()
     {

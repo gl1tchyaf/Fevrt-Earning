@@ -4,15 +4,19 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class webview extends AppCompatActivity {
     private WebView webView;
+    static long point=0;
+
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,7 @@ public class webview extends AppCompatActivity {
         webView= findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(home.link);
+        TextView mTextField = findViewById(R.id.point);
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -34,6 +39,26 @@ public class webview extends AppCompatActivity {
         reload.setOnClickListener(v -> reload());
         ImageView openInBrowser = findViewById(R.id.open);
         openInBrowser.setOnClickListener(v -> openInBrowser());
+
+
+
+        long maxCounter = 300000000;
+        long diff = 1000;
+
+        new CountDownTimer(maxCounter , diff ) {
+
+            public void onTick(long millisUntilFinished) {
+                long diff = maxCounter - millisUntilFinished;
+                mTextField.setText("seconds completed: " +diff  / 1000);
+                //here you can have your logic to set text to edittext
+                point= diff  / 1000;
+            }
+
+            public void onFinish() {
+                mTextField.setText("Max limit reached");
+            }
+
+        }.start();
     }
 
     @Override
@@ -42,7 +67,10 @@ public class webview extends AppCompatActivity {
             webView.goBack();
         }
         else{
+            database d= new database();
+            d.saveData();
             super.onBackPressed();
+
         }
 
     }
