@@ -26,6 +26,7 @@ public class home extends AppCompatActivity {
         TextView name= findViewById(R.id.profilename);
         ImageView profilephoto = findViewById(R.id.profilePic);
         Button logout = findViewById(R.id.logout);
+        Button point = findViewById(R.id.seePoint);
 
         name.setText(login.name);
         Picasso.get().load("https://graph.facebook.com/"+login.id+"/picture?type=large").into(profilephoto);
@@ -41,7 +42,19 @@ public class home extends AppCompatActivity {
 
         logout.setOnClickListener(v -> logout());
 
+        point.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                seePoint();
+            }
+        });
 
+
+    }
+
+    void seePoint(){
+        Intent i = new Intent(home.this,SeePoint.class);
+        startActivity(i);
     }
 
     void facebook(){
