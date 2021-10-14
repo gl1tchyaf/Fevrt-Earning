@@ -28,6 +28,7 @@ public class database extends AppCompatActivity {
     }
 
     public void seePoint2(){
+       // System.out.println("See point 2");
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Employee");
         reference.addValueEventListener(new ValueEventListener() {
             @Override

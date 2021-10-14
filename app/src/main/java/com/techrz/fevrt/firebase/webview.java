@@ -87,4 +87,12 @@ public class webview extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(home.link));
         startActivity(intent);
     }
+    @Override
+    public void onStop(){
+        super.onStop();
+        //database d= new database();
+        //d.saveData();
+        finish();
+
+    }
 }
