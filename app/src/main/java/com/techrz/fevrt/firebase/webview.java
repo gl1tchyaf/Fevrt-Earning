@@ -52,6 +52,7 @@ public class webview extends AppCompatActivity {
                 mTextField.setText("seconds completed: " +diff  / 1000);
                 //here you can have your logic to set text to edittext
                 point= diff  / 1000;
+
             }
 
             public void onFinish() {
@@ -59,7 +60,11 @@ public class webview extends AppCompatActivity {
             }
 
         }.start();
+
+
+
     }
+
 
     @Override
     public void onBackPressed() {
@@ -90,9 +95,10 @@ public class webview extends AppCompatActivity {
     @Override
     public void onStop(){
         super.onStop();
-        //database d= new database();
-        //d.saveData();
+        System.out.println("Test");
+        System.out.println();
         finish();
+
 
     }
 }

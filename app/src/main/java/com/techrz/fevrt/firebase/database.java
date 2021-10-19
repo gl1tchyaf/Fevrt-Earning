@@ -52,6 +52,42 @@ public class database extends AppCompatActivity {
         });
     }
 
+    public void updatePoint(){
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Employee");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Boolean b= false;
+
+                for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                    String id = snapshot1.child("id").getValue(String.class);
+                    int point = snapshot1.child("point").getValue(int.class);
+                    facebookLogin fb= new facebookLogin();
+                    if(id.equals(fb.id)){
+                        webview w = new webview();
+                        int temp;
+                        int pointloc=(int)w.point;
+
+                        temp = pointloc+point;
+                        System.out.println(temp);
+
+                        //snapshot1.child("point").getRef().setValue(100);
+
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+    }
+
     public void saveData(){
 
         DAOEmployee dao =new DAOEmployee();
@@ -65,7 +101,7 @@ public class database extends AppCompatActivity {
         System.out.println(idgl);
 
         if(fb.id.equals(idgl)){
-
+            updatePoint();
         }
         else{
             dao.add(emp).addOnSuccessListener(suc ->
