@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class webview extends AppCompatActivity {
     private WebView webView;
-    static long point=0;
+    static long point=-1;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -51,18 +51,13 @@ public class webview extends AppCompatActivity {
                 long diff = maxCounter - millisUntilFinished;
                 mTextField.setText("seconds completed: " +diff  / 1000);
                 //here you can have your logic to set text to edittext
-                point= diff  / 1000;
+                point = diff/1000;
 
             }
-
             public void onFinish() {
                 mTextField.setText("Max limit reached");
             }
-
         }.start();
-
-
-
     }
 
 
@@ -95,10 +90,8 @@ public class webview extends AppCompatActivity {
     @Override
     public void onStop(){
         super.onStop();
-        System.out.println("Test");
-        System.out.println();
+        System.out.println("Print"+point);
         finish();
-
 
     }
 }
